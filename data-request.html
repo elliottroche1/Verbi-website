@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account & Data - Verbi</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #fafafa;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Header */
+        header {
+            padding: 30px 0;
+            background: #fff;
+            border-bottom: 1px solid #e0e0e0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: #1a1a1a;
+        }
+
+        .logo img {
+            height: 36px;
+            width: auto;
+            display: block;
+        }
+
+        .back-link {
+            background: #00a0a0;
+            color: #fff;
+            padding: 10px 24px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: background 0.2s ease;
+            display: inline-block;
+        }
+
+        .back-link:hover {
+            background: #008888;
+        }
+
+        /* Main Content */
+        main {
+            padding: 80px 0 120px;
+            min-height: calc(100vh - 400px);
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            margin-bottom: 16px;
+            color: #1a1a1a;
+        }
+
+        .page-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #666;
+            max-width: 800px;
+            margin: 0 0 48px;
+            font-weight: 400;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .content-card {
+            background: #fff;
+            padding: 40px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #1a1a1a;
+        }
+
+        .card-description {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #666;
+            margin-bottom: 24px;
+        }
+
+        .email-contact {
+            background: #f5f5f5;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            padding: 24px;
+            margin: 24px 0;
+            text-align: center;
+        }
+
+        .email-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .email-address {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #00a0a0;
+            word-break: break-all;
+        }
+
+        .email-address a {
+            color: #00a0a0;
+            text-decoration: none;
+        }
+
+        .email-address a:hover {
+            text-decoration: underline;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 32px 0 16px;
+            color: #1a1a1a;
+        }
+
+        .instructions-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 24px;
+        }
+
+        .instructions-list li {
+            padding: 12px 0;
+            padding-left: 36px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #4a4a4a;
+            position: relative;
+        }
+
+        .instructions-list li::before {
+            content: attr(data-step);
+            position: absolute;
+            left: 0;
+            top: 12px;
+            background: #00a0a0;
+            color: #fff;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .instructions-list li strong {
+            color: #1a1a1a;
+            font-weight: 600;
+        }
+
+        .screenshot-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .screenshot {
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        }
+
+        .screenshot img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .screenshot-caption {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #888;
+            margin-top: 8px;
+            font-weight: 400;
+        }
+
+        .info-box {
+            background: #fff9e6;
+            border: 1px solid #f0d890;
+            border-left: 4px solid #e0b020;
+            border-radius: 4px;
+            padding: 16px 20px;
+            margin-top: 24px;
+        }
+
+        .info-box p {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: #4a4a4a;
+            margin: 0;
+        }
+
+        .info-box strong {
+            color: #1a1a1a;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 0;
+            background: #2a2a2a;
+            color: #fff;
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            text-align: left;
+        }
+
+        .footer-title {
+            font-size: 1.5rem;
+            margin-bottom: 32px;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: flex-start;
+            gap: 80px;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .contact-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            color: #aaa;
+        }
+
+        .contact-item a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .contact-item a:hover {
+            color: #00d4d4;
+        }
+
+        .copyright {
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.875rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            font-weight: 400;
+            color: #999;
+        }
+
+        .copyright .separator {
+            margin: 0 12px;
+            color: #666;
+        }
+
+        .copyright .privacy-link {
+            color: #bbb;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .copyright .privacy-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: #00a0a0;
+            transition: width 0.3s ease;
+        }
+
+        .copyright .privacy-link:hover {
+            color: #00d4d4;
+        }
+
+        .copyright .privacy-link:hover::after {
+            width: 100%;
+        }
+
+        /* Custom selection colors */
+        ::selection {
+            background: #00a0a0;
+            color: #fff;
+        }
+
+        ::-moz-selection {
+            background: #00a0a0;
+            color: #fff;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .page-title {
+                font-size: 3.5rem;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .screenshot-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 24px;
+            }
+
+            main {
+                padding: 60px 0 80px;
+            }
+
+            .page-title {
+                font-size: 2.75rem;
+                letter-spacing: -1.5px;
+            }
+
+            .page-description {
+                font-size: 1.1rem;
+                padding-left: 20px;
+            }
+
+            .content-grid {
+                gap: 30px;
+            }
+
+            .content-card {
+                padding: 40px 30px;
+            }
+
+            .card-title {
+                font-size: 1.75rem;
+            }
+
+            .email-address {
+                font-size: 1.2rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .footer-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">
+                    <img src="verbi-logo-11-light-mode.png" alt="Verbi Logo">
+                    <span>Verbi</span>
+                </a>
+                <a href="index.html" class="back-link">Back to Home</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1 class="page-title">Account & Data</h1>
+            <p class="page-description">
+                You have the right to request access to and deletion of your personal information. Follow the instructions below to delete or access any personal information we may hold about you (e.g. your email and profile content).
+            </p>
+
+            <div class="content-grid">
+                <!-- Data Request Card -->
+                <div class="content-card">
+                    <h2 class="card-title">Request Your Data</h2>
+                    <p class="card-description">
+                        To receive a copy of all personal data we hold about you, simply send us an email. We'll respond within 30 days with your complete data export.
+                    </p>
+
+                    <div class="email-contact">
+                        <div class="email-label">Contact Us</div>
+                        <div class="email-address">
+                            <a href="mailto:elliott@verbi.pro">elliott@verbi.pro</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Account Deletion Card -->
+                <div class="content-card">
+                    <h2 class="card-title">Delete Your Account</h2>
+                    <p class="card-description">
+                        You can permanently delete your account and all associated data directly from the Verbi app.
+                    </p>
+
+                    <h3 class="section-subtitle">In-App Deletion</h3>
+                    <ol class="instructions-list">
+                        <li data-step="1">
+                            <strong>Open the app</strong> and tap your profile icon to access your account
+                        </li>
+                        <li data-step="2">
+                            <strong>Scroll to Settings</strong> and tap "Delete Account"
+                        </li>
+                        <li data-step="3">
+                            <strong>Confirm deletion</strong> by tapping "Delete" in the confirmation dialog
+                        </li>
+                    </ol>
+
+                    <div class="screenshot-container">
+                        <div>
+                            <div class="screenshot">
+                                <img src="Delete Account 1.jpeg" alt="Step 1: Tap profile icon">
+                            </div>
+                            <div class="screenshot-caption">Step 1</div>
+                        </div>
+                        <div>
+                            <div class="screenshot">
+                                <img src="Delete Account 2.jpeg" alt="Step 2: Tap Delete Account">
+                            </div>
+                            <div class="screenshot-caption">Step 2</div>
+                        </div>
+                        <div>
+                            <div class="screenshot">
+                                <img src="Delete Account 3.jpeg" alt="Step 3: Confirm deletion">
+                            </div>
+                            <div class="screenshot-caption">Step 3</div>
+                        </div>
+                    </div>
+
+                    <h3 class="section-subtitle" style="margin-top: 50px;">Email Deletion Request</h3>
+                    <p class="card-description">
+                        Can't access the app? Email us at <a href="mailto:elliott@verbi.pro" style="color: #00a0a0; text-decoration: none; font-weight: 700;">elliott@verbi.pro</a> with your registered email address and we'll process your deletion request within 7 business days.
+                    </p>
+
+                    <div class="info-box">
+                        <p><strong>Important:</strong> Account deletion is permanent and cannot be undone. All your learning progress, saved content, and account information will be permanently erased.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <h2 class="footer-title">Get In Touch</h2>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span class="contact-label">Email</span>
+                        <a href="mailto:elliott@verbi.pro">elliott@verbi.pro</a>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">Phone</span>
+                        <a href="tel:+447597486522">+44 7597 486522</a>
+                    </div>
+                </div>
+                <div class="copyright">
+                    &copy; 2026 Verbi Languages Ltd. All rights reserved.
+                    <span class="separator">•</span>
+                    <a href="privacy.html" class="privacy-link">Privacy Policy</a>
+                    <span class="separator">•</span>
+                    <a href="data-request.html" class="privacy-link">Account & Data</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
