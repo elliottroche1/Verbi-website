@@ -709,6 +709,124 @@
             width: 100%;
         }
 
+        /* Payment Confirmation Pages */
+        .payment-confirmation {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #ffffff 0%, #f9f9f9 100%);
+        }
+
+        .confirmation-section {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .confirmation-content {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 60px 40px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .confirmation-icon {
+            margin: 0 auto 30px;
+            display: inline-block;
+            animation: scaleIn 0.6s ease-out;
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .confirmation-icon svg {
+            filter: drop-shadow(0 8px 24px rgba(0, 160, 160, 0.2));
+        }
+
+        .failure-icon svg {
+            filter: drop-shadow(0 8px 24px rgba(212, 83, 77, 0.2));
+        }
+
+        .confirmation-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            letter-spacing: -2px;
+            margin-bottom: 30px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #000 0%, #1a1a1a 50%, #000 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .confirmation-message {
+            font-size: 1.3rem;
+            line-height: 1.7;
+            color: #2a2a2a;
+            margin-bottom: 30px;
+            font-weight: 500;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+        }
+
+        .confirmation-instruction {
+            font-size: 1.15rem;
+            line-height: 1.6;
+            color: #4a4a4a;
+            font-weight: 500;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            font-style: italic;
+        }
+
+        .return-button {
+            background: linear-gradient(135deg, #00a0a0 0%, #00d4d4 100%);
+            color: #fff;
+            padding: 18px 48px;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+            font-weight: 700;
+            border-radius: 30px;
+            border: none;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 24px rgba(0, 160, 160, 0.35);
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .return-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0, 160, 160, 0.5);
+        }
+
+        .return-button:active {
+            transform: translateY(-1px);
+        }
+
+        .support-link {
+            display: inline-block;
+            color: #00a0a0;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s ease;
+            padding: 8px 0;
+        }
+
+        .support-link:hover {
+            border-bottom-color: #00a0a0;
+            color: #00d4d4;
+        }
 
         /* Responsive */
         @media (max-width: 1024px) {
@@ -825,6 +943,34 @@
                 flex-direction: column;
                 gap: 30px;
             }
+
+            .confirmation-content {
+                padding: 30px 24px;
+            }
+
+            .confirmation-icon {
+                margin: 0 auto 20px;
+            }
+
+            .confirmation-icon svg {
+                width: 80px;
+                height: 80px;
+            }
+
+            .confirmation-title {
+                font-size: 2.5rem;
+                letter-spacing: -1.5px;
+                margin-bottom: 20px;
+            }
+
+            .confirmation-message {
+                font-size: 1.1rem;
+                margin-bottom: 16px;
+            }
+
+            .confirmation-instruction {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
@@ -841,92 +987,159 @@
         </div>
     </header>
 
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1>Scenario-based practice for real fluency</h1>
-                    <div class="hero-description">
-                        <p><strong>Build skills across listening, speaking, reading, writing & memory.</strong> Each learning mode targets a core ability.</p>
+    <!-- Main content (hidden when payment confirmation is shown) -->
+    <div id="main-content">
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1>Scenario-based practice for real fluency</h1>
+                        <div class="hero-description">
+                            <p><strong>Build skills across listening, speaking, reading, writing & memory.</strong> Each learning mode targets a core ability.</p>
+                        </div>
+                    </div>
+                    <div class="hero-logo">
+                        <img src="verbi-logo-11-light-mode.png" alt="Verbi">
                     </div>
                 </div>
-                <div class="hero-logo">
-                    <img src="verbi-logo-11-light-mode.png" alt="Verbi">
-                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="methods-section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Five Learning Methods</h2>
-            </div>
-            <div class="methods-grid">
-                <div class="method-card">
-                    <div class="method-number">01</div>
-                    <h3 class="method-title">Study Mode</h3>
-                    <p class="method-description">Absorb phrases with translations and life-like audio.</p>
+        <section class="methods-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Five Learning Methods</h2>
                 </div>
-
-                <div class="method-card">
-                    <div class="method-number">02</div>
-                    <h3 class="method-title">Recall Mode</h3>
-                    <p class="method-description">Strengthen memory through active recall.</p>
-                </div>
-
-                <div class="method-card">
-                    <div class="method-number">03</div>
-                    <h3 class="method-title">Listening Mode</h3>
-                    <p class="method-description">Train your ear for real-time comprehension.</p>
-                </div>
-
-                <div class="method-card">
-                    <div class="method-number">04</div>
-                    <h3 class="method-title">Writing Mode</h3>
-                    <p class="method-description">Sharpen perception of target language sounds by writing what you hear.</p>
-                </div>
-
-                <div class="method-card">
-                    <div class="method-number">05</div>
-                    <h3 class="method-title">Conversation Mode</h3>
-                    <p class="method-description">Respond to scenario prompts via voice. Build speaking confidence.</p>
-                </div>
-            </div>
-
-            <p class="section-subtitle">Tailor content to your life - like navigating a market, sharing family stories, or sealing a business deal - with phrases personalized to your level, goals, and next steps.</p>
-        </div>
-    </section>
-
-    <section class="progress-section">
-        <div class="container">
-            <h2 class="progress-title">Serious Progress</h2>
-            <p class="progress-text">31 languages. Research-backed methods for genuine progress.</p>
-
-            <div class="footer-content">
-                <h2 class="footer-title">Get In Touch</h2>
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <span class="contact-label">Email</span>
-                        <a href="mailto:elliott@verbi.pro">elliott@verbi.pro</a>
+                <div class="methods-grid">
+                    <div class="method-card">
+                        <div class="method-number">01</div>
+                        <h3 class="method-title">Study Mode</h3>
+                        <p class="method-description">Absorb phrases with translations and life-like audio.</p>
                     </div>
-                    <div class="contact-item">
-                        <span class="contact-label">Phone</span>
-                        <a href="tel:+447597486522">+44 7597 486522</a>
+
+                    <div class="method-card">
+                        <div class="method-number">02</div>
+                        <h3 class="method-title">Recall Mode</h3>
+                        <p class="method-description">Strengthen memory through active recall.</p>
+                    </div>
+
+                    <div class="method-card">
+                        <div class="method-number">03</div>
+                        <h3 class="method-title">Listening Mode</h3>
+                        <p class="method-description">Train your ear for real-time comprehension.</p>
+                    </div>
+
+                    <div class="method-card">
+                        <div class="method-number">04</div>
+                        <h3 class="method-title">Writing Mode</h3>
+                        <p class="method-description">Sharpen perception of target language sounds by writing what you hear.</p>
+                    </div>
+
+                    <div class="method-card">
+                        <div class="method-number">05</div>
+                        <h3 class="method-title">Conversation Mode</h3>
+                        <p class="method-description">Respond to scenario prompts via voice. Build speaking confidence.</p>
                     </div>
                 </div>
-                <div class="copyright">
-                    &copy; 2026 Verbi Languages Ltd. All rights reserved.
-                    <span class="separator">•</span>
-                    <a href="privacy.html" class="privacy-link">Privacy Policy</a>
-                    <span class="separator">•</span>
-                    <a href="data-request.html" class="privacy-link">Account & Data</a>
+
+                <p class="section-subtitle">Tailor content to your life - like navigating a market, sharing family stories, or sealing a business deal - with phrases personalized to your level, goals, and next steps.</p>
+            </div>
+        </section>
+
+        <section class="progress-section">
+            <div class="container">
+                <h2 class="progress-title">Serious Progress</h2>
+                <p class="progress-text">31 languages. Research-backed methods for genuine progress.</p>
+
+                <div class="footer-content">
+                    <h2 class="footer-title">Get In Touch</h2>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <span class="contact-label">Email</span>
+                            <a href="mailto:elliott@verbi.pro">elliott@verbi.pro</a>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-label">Phone</span>
+                            <a href="tel:+447597486522">+44 7597 486522</a>
+                        </div>
+                    </div>
+                    <div class="copyright">
+                        &copy; 2026 Verbi Languages Ltd. All rights reserved.
+                        <span class="separator">•</span>
+                        <a href="privacy.html" class="privacy-link">Privacy Policy</a>
+                        <span class="separator">•</span>
+                        <a href="data-request.html" class="privacy-link">Account & Data</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
+
+    <!-- Payment Success Page -->
+    <div id="payment-success" class="payment-confirmation" style="display: none;">
+        <section class="confirmation-section success">
+            <div class="container">
+                <div class="confirmation-content">
+                    <div class="confirmation-icon success-icon">
+                        <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="60" cy="60" r="58" stroke="#00a0a0" stroke-width="4"/>
+                            <path d="M35 60L52 77L85 44" stroke="#00a0a0" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h1 class="confirmation-title">Payment Successful</h1>
+                    <p class="confirmation-message">Your payment has been processed successfully.</p>
+                    <p class="confirmation-instruction">You can now close this page and return to the Verbi app.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Payment Failure Page -->
+    <div id="payment-failure" class="payment-confirmation" style="display: none;">
+        <section class="confirmation-section failure">
+            <div class="container">
+                <div class="confirmation-content">
+                    <div class="confirmation-icon failure-icon">
+                        <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="60" cy="60" r="58" stroke="#d4534d" stroke-width="4"/>
+                            <path d="M45 45L75 75M75 45L45 75" stroke="#d4534d" stroke-width="6" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h1 class="confirmation-title">Payment Unsuccessful</h1>
+                    <p class="confirmation-message">We couldn't process your payment. Please check your payment details and try again.</p>
+                    <p class="confirmation-instruction">Return to the Verbi app to retry your purchase.</p>
+                </div>
+            </div>
+        </section>
+    </div>
 
     <script>
+        // Check for payment confirmation parameter
+        function checkPaymentStatus() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const success = urlParams.get('success');
+
+            if (success === 'true') {
+                document.getElementById('main-content').style.display = 'none';
+                document.getElementById('payment-success').style.display = 'block';
+                document.title = 'Payment Successful - Verbi';
+            } else if (success === 'false') {
+                document.getElementById('main-content').style.display = 'none';
+                document.getElementById('payment-failure').style.display = 'block';
+                document.title = 'Payment Unsuccessful - Verbi';
+            }
+        }
+
+        // Function to return to app
+        function returnToApp() {
+            // You can customize this URL to deep link into your app
+            // For now, it will redirect to the main page
+            window.location.href = '/';
+        }
+
+        // Run on page load
+        checkPaymentStatus();
+
         // Cursor trail effect
         document.addEventListener('mousemove', (e) => {
             const x = (e.clientX / window.innerWidth) * 100;
